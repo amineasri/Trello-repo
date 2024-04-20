@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.example.trello_api.repo.UtilisateurRepo;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UtilisateurService {
@@ -22,11 +21,11 @@ public class UtilisateurService {
     public Utilisateur trouverUtilisateurParId(Long id) {
         return utilisateurRepository.findById(id).orElseThrow(()->new RessourceNotFound("Utilisateur id= %s not found".formatted(id)));
     }
-
+/*
     public Utilisateur trouverUtilisateurParEmail(String email) {
         return utilisateurRepository.findByEmail(email);
     }
-
+*/
     public List<Utilisateur> obtenirTousLesUtilisateurs() {
         return utilisateurRepository.findAll();
     }

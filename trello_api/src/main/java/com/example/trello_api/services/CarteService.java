@@ -4,9 +4,7 @@ import com.example.trello_api.exceptions.RessourceNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.trello_api.repo.CarteRepo;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CarteService {

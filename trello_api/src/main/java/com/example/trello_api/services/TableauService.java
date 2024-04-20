@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import com.example.trello_api.repo.TableauRepo;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TableauService {
