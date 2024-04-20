@@ -1,5 +1,6 @@
 package com.example.trello_api.services;
 import com.example.trello_api.entities.Tableau;
+import com.example.trello_api.exceptions.RessourceNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.trello_api.repo.TableauRepo;
@@ -18,8 +19,8 @@ public class TableauService {
     }
 
     public Tableau trouverTableauParId(Long id) {
-        Optional<Tableau> optionalTableau = tableauRepository.findById(id);
-        return optionalTableau.orElse(null);
+       return tableauRepository.findById(id).orElseThrow(()->new RessourceNotFound("Tableau id= %s not found".formatted(id)));
+
     }
 
     public List<Tableau> obtenirTousLesTableaux() {

@@ -1,5 +1,6 @@
 package com.example.trello_api.services;
 import com.example.trello_api.entities.Liste;
+import com.example.trello_api.exceptions.RessourceNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.trello_api.repo.ListeRepo;
@@ -18,8 +19,8 @@ public class ListeService {
     }
 
     public Liste trouverListeParId(Long id) {
-        Optional<Liste> optionalListe = listeRepository.findById(id);
-        return optionalListe.orElse(null);
+        return listeRepository.findById(id).orElseThrow(()->new RessourceNotFound("Liste id= %s introuvable".formatted(id)));
+
     }
 
     public List<Liste> obtenirToutesLesListes() {

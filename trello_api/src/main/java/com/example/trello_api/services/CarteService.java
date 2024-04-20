@@ -1,5 +1,6 @@
 package com.example.trello_api.services;
 import com.example.trello_api.entities.Carte;
+import com.example.trello_api.exceptions.RessourceNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.trello_api.repo.CarteRepo;
@@ -18,8 +19,9 @@ public class CarteService {
     }
 
     public Carte trouverCarteParId(Long id) {
-        Optional<Carte> optionalCarte = carteRepository.findById(id);
-        return optionalCarte.orElse(null);
+
+        return carteRepository.findById(id).orElseThrow(()-> new RessourceNotFound("Carte %s introuvable".formatted(id)));
+
     }
 
     public List<Carte> obtenirToutesLesCartes() {
